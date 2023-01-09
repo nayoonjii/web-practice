@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member" >
+
+  <!-- 중복아아디검색 -->
+  <select id="id_check" resultType="member">
+    select * from member where mem_id=#{mem_id}  <!-- DAOImpl의 전달인자명 id와 #{mem_id}하고
+    달라도된다. -->
+  </select>
+
+  <!-- 우편 주소검색 -->
+  <select id="m_zip" resultType="zipcode">
+    select * from zipcode where dong like #{dong}
+  </select>
+  
+  <!-- 회원저장 -->
+  <select id="m_in" >
+    insert into member (mem_id,mem_pwd,mem_name,mem_zip,mem_zip2,mem_addr,mem_addr2,
+    mem_phone01,mem_phone02,mem_phone03,mail_id,mail_domain,mem_state,mem_date) values
+    (#{mem_id},#{mem_pwd},#{mem_name},#{mem_zip},#{mem_zip2},#{mem_addr},#{mem_addr2},
+    #{mem_phone01},#{mem_phone02},#{mem_phone03},#{mail_id},#{mail_domain},1,sysdate)
+  </select>
+  
+  <!-- 비번찾기에서 회원 정보 검색 -->
+  <select id="p_find" resultType="member">
+    select * from member where mem_id=#{mem_id} and mem_name=#{mem_name}
+  </select>
+
+  <!-- 암호화된 임시비번 수정 -->
+  <select id="p_edit">
+    update member set mem_pwd=#{mem_pwd} where mem_id=#{mem_id}
+  </select>
+  
+  <!-- 로그인인증 -->
+  <select id="login_ck" resultType="member">
+    select * from member where mem_id=#{mem_id} and mem_state=1
+  </select>
+
+  <!-- 회원정보 보기 -->
+  <select id="m_edit" parameterType="java.lang.String" resultType="member">
+    select * from member where mem_id=#{id}
+  </select>
+  
+  <!-- 정보수정 완료 -->
+  <select id="edit_ok">
+    update member set mem_pwd=#{mem_pwd},mem_name=#{mem_name},mem_zip=#{mem_zip},mem_zip2=#{mem_zip2},
+    mem_addr=#{mem_addr},mem_addr2=#{mem_addr2},mem_phone01=#{mem_phone01},mem_phone02=#{mem_phone02},
+    mem_phone03=#{mem_phone03},mail_id=#{mail_id},mail_domain=#{mail_domain} where mem_id=#{mem_id}
+  </select>
+  
+  <!-- 회원 탈퇴 완료 -->
+  <select id="m_del">
+    update member set mem_delcont=#{mem_delcont}, mem_deldate=sysdate, mem_state=2
+    where mem_id=#{mem_id} <!-- id를 기준으로 탈퇴사유, 탈퇴날짜 탈퇴회원인 경우는 구분값2
+    (참고로 가입회원은 구분값 1)로 회원정보를 수정(회원 탈퇴)한다. -->
+  </select>
+
+</mapper>

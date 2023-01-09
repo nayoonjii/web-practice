@@ -1,0 +1,4 @@
+127.0.0.1 - - [09/Nov/2022:21:13:06 +0900] "GET / HTTP/1.1" 200 185
+0:0:0:0:0:0:0:1 - - [09/Nov/2022:21:13:07 +0900] "GET /WEB-INF/classes/net/daum/controller/RestTestController.java HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [09/Nov/2022:21:13:07 +0900] "GET /favicon.ico HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [09/Nov/2022:21:13:46 +0900] "GET /sendList HTTP/1.1" 200 120

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Board"><!-- 스프링 mvc게시판 매퍼태그 -->
+
+	<!-- 게시판 저장 -->
+	<insert id="b_in" parameterType="b">  <!-- parameterType은 전달인자 자료형 타입 -->
+	  insert into tbl_board (bno,writer,title,content,regdate)
+	  values(bno_seq.nextval,#{writer},#{title},#{content},sysdate)
+	  <!-- #{writer}는 b.getWriter()를 호출한것과 같은 효과가 발생한다. -->
+	</insert>
+	
+	<!-- 총레코드 개수 -->
+	<select id="b_count" resultType="int">  <!-- resultType속성은 반환자료형 타입이다. -->
+	  select count(*) from tbl_board
+	</select>
+	
+	<!-- 목록 -->
+	<select id="b_list" resultType="b">
+	  select * from (select rowNum rNum,bno,writer,title,viewcnt,regdate,replycnt from
+	  (select * from tbl_board order by bno desc))
+	  where rNum &gt;= #{startrow} and rNum &lt;= #{endrow}
+	  <!-- rowNum컬럼은오라클에서 테이블 생성시 기본으로 알아서 추가되는 시스템 테이블로 최초 레코드 저장시
+	  일련 번호값이 정수숫자형으로 저장된다.rNum은 rowNum컬럼의 별칭명.&gt;은 >, &lt;는 < 를 나타냄
+	  결국 한페이지에 최대보여지는 목록개수를 몇개로 제한한다. -->
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<select id="b_hit">  <!-- resultType속성은 반환자료형 타입이다. -->
+	  update tbl_board set viewcnt=viewcnt+1 where bno=#{bno}
+	</select>
+	
+	<!-- 내용 보기 -->
+	<select id="b_cont" parameterType="int" resultType="b">
+	  select * from tbl_board where bno=#{bno}
+	</select>
+	
+	<!-- 수정 -->
+	<update id="b_edit" parameterType="b">
+	  update tbl_board set writer=#{writer},title=#{title},
+	  content=#{content} where bno=#{bno}
+	</update>
+	
+	<delete id="b_del"  >
+	  delete tbl_board where bno=#{bno}
+	</delete>
+	
+	<!-- 댓글 수 카운터 -->
+	<update id="updateReplyCnt" parameterType="java.util.Map">
+	  <!-- parameterType은 전달인자 자료형으로 생략 가능 -->
+	  update tbl_board set replycnt=replycnt+#{count} where bno=#{bno}
+	</update>
+</mapper>

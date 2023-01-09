@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminBbs" >
+
+  <!-- 관리자 자료실 검색 전후 레코드 개수 -->
+  <select id="abbs_row" resultType="int">
+    select count(bbs_no) from bbs
+    <where>
+      <if test="find_field==''"></if>  <!-- 검색 전 총레코드 개수 -->
+      <if test="find_field == 'bbs_title'">
+        bbs_title like #{find_name}
+      </if>
+      <if test="find_field =='bbs_cont'"><!-- 검색조건이 글내용인 경우 -->
+        bbs_cont like #{find_name}
+      </if>
+    </where>
+  </select>
+
+  <!-- 관리자 자료실 검색 전후 목록 -->
+  <select id="abbs_list" resultType="bbs">
+    select * from (select rowNum rNum,bbs_no,bbs_name,bbs_title,bbs_hit,bbs_ref,
+    bbs_step,bbs_level,bbs_date from (select * from bbs
+    <where>
+      <if test="find_field==''"></if>  <!-- 검색 전 총레코드 개수 -->
+      <if test="find_field == 'bbs_title'">
+        bbs_title like #{find_name}
+      </if>
+      <if test="find_field =='bbs_cont'"><!-- 검색조건이 글내용인 경우 -->
+        bbs_cont like #{find_name}
+      </if>
+    </where>
+      order by bbs_ref desc, bbs_level asc))
+      where rNum &gt;=#{startrow} and rNum &lt;= #{endrow}
+  </select>
+  
+  <!-- 관리자 자료실 저장 -->
+  <select id="abbs_in" ><!-- parameterType은 생략가능 , resultType은 생략 불가 -->
+    insert into bbs (bbs_no,bbs_name,bbs_title,bbs_pwd,bbs_cont,bbs_file,bbs_ref,
+    bbs_step,bbs_level,bbs_date) values(bbs_no_seq.nextval, #{bbs_name},#{bbs_title},
+    #{bbs_pwd},#{bbs_cont},#{bbs_file},bbs_no_seq.nextval,0,0,sysdate)
+  </select>
+  
+  <!-- 관리자 자료실 내용 보기 와 수정폼-->
+  <select id="abbs_cont" resultType="com.naver.vo.BbsVO">
+    select * from bbs where bbs_no=#{bbs_no} 
+  </select>
+
+<!-- 관리자 자료실 내용 수정 -->
+  <select id="abbs_edit">
+    update bbs set bbs_name=#{bbs_name}, bbs_title=#{bbs_title},
+     bbs_cont=#{bbs_cont}, bbs_file=#{bbs_file} where bbs_no=#{bbs_no}
+  </select>
+  
+  <!-- 관리자 자료실 글 삭제 -->
+  <select id="abbs_del">
+      delete bbs where bbs_no=#{bbs_no} 
+  </select>
+</mapper>
+
+
+
+
+
+
+

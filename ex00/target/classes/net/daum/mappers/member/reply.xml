@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Reply"> <!-- Reply 매퍼 네임스페이스 명 지정 -->
+  
+  <!-- 댓글 저장 -->
+  <insert id="reply_in" parameterType="net.daum.vo.ReplyVO">
+    insert into tbl_reply(rno,bno,replyer,replytext,regdate) 
+    values(rno_seq.nextval,#{bno},#{replyer},#{replytext},sysdate)
+    <!-- #{bno}하면 getBno()를 호출한 것과 같은 효과가 난다. -->
+  </insert>
+
+
+  <!-- 댓글목록, parameterType은 전달인자 타입으로 생략가능함 resultType은 반환타입이다. -->
+  <select id="reply_list" resultType="r">
+    select * from tbl_reply where bno=#{bno} order by rno desc
+  </select>
+
+<!-- 댓글 수정 -->
+  <update id="reply_edit">
+    update tbl_reply set replyText=#{replytext},updatedate=sysdate where rno=#{rno}
+  </update>
+  
+  <!-- 댓글 삭제 -->
+  <delete id="reply_del"><!-- parameterType생략 -->
+    delete from tbl_reply where rno=#{rno}  <!-- from 절은 생략가능 -->
+  </delete>
+  
+  <!-- 댓글 번호로 게시판 번호 구하기 -->
+  <select id="reply_bno" parameterType="int" resultType="int">
+    select bno from tbl_reply where rno=#{rno}
+  </select>
+  
+  
+</mapper>

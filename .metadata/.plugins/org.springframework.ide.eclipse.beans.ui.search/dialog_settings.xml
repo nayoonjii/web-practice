@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="BeansSearchPage">
+		<item key="CASE_SENSITIVE" value="false"/>
+		<item key="REG_EX_SEARCH" value="false"/>
+		<item key="HISTORY_SIZE" value="3"/>
+		<section name="HISTORY0">
+			<item key="searchFor" value="0"/>
+			<item key="pattern" value="@Configuration"/>
+			<item key="isCaseSensitive" value="false"/>
+			<item key="isRegExp" value="false"/>
+			<item key="scope" value="0"/>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY1">
+			<item key="searchFor" value="0"/>
+			<item key="pattern" value="@Component"/>
+			<item key="isCaseSensitive" value="false"/>
+			<item key="isRegExp" value="false"/>
+			<item key="scope" value="0"/>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY2">
+			<item key="searchFor" value="0"/>
+			<item key="pattern" value="댓글"/>
+			<item key="isCaseSensitive" value="false"/>
+			<item key="isRegExp" value="false"/>
+			<item key="scope" value="0"/>
+			<list key="workingSets">
+			</list>
+		</section>
+	</section>
+</section>

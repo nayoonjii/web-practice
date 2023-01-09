@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Aop">
+
+    <select id="blist" resultType="net.daum.vo.AopVO">
+        select * from testBoard
+    </select>
+
+    <update id="bhit">
+        update testBoard set bhit=bhit+1 where bno=#{bno}
+    </update>
+
+    <select id="bcont" resultType="net.daum.vo.AopVO">
+        select * from testBoard where BNO=#{bno}
+    </select>
+</mapper>
+

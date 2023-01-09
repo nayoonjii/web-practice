@@ -1,0 +1,16 @@
+127.0.0.1 - - [18/Oct/2022:12:24:40 +0900] "GET / HTTP/1.1" 200 198
+0:0:0:0:0:0:0:1 - - [18/Oct/2022:12:24:42 +0900] "GET /controller/ HTTP/1.1" 200 187
+0:0:0:0:0:0:0:1 - - [18/Oct/2022:12:24:42 +0900] "GET /favicon.ico HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [18/Oct/2022:12:24:51 +0900] "GET /controller/board_cont HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [18/Oct/2022:12:25:12 +0900] "GET /controller/board_list HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [18/Oct/2022:12:25:19 +0900] "GET /board_list HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [18/Oct/2022:12:25:34 +0900] "GET /board/board_list HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [18/Oct/2022:12:25:50 +0900] "GET /board/ HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [18/Oct/2022:12:25:57 +0900] "GET /board/board_write HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [18/Oct/2022:12:26:29 +0900] "GET /controller/board/board_write HTTP/1.1" 200 1218
+0:0:0:0:0:0:0:1 - - [18/Oct/2022:12:26:30 +0900] "GET /controller/resources/js/board.js HTTP/1.1" 200 782
+0:0:0:0:0:0:0:1 - - [18/Oct/2022:12:26:30 +0900] "GET /controller/resources/js/jquery.js HTTP/1.1" 200 89501
+0:0:0:0:0:0:0:1 - - [18/Oct/2022:12:26:31 +0900] "GET /board/board_list?page=1 HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [18/Oct/2022:12:26:35 +0900] "GET /board/board_list?page=1 HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [18/Oct/2022:12:26:39 +0900] "GET /board/board_list HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [18/Oct/2022:12:27:13 +0900] "GET /board/board_cont?bno=26&page=1 HTTP/1.1" 404 721

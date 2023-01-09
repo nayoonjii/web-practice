@@ -1,0 +1,10 @@
+127.0.0.1 - - [23/Oct/2022:14:34:33 +0900] "GET / HTTP/1.1" 200 197
+0:0:0:0:0:0:0:1 - - [23/Oct/2022:14:34:33 +0900] "GET /controller/WEB-INF/views/board/board_cont2.jsp HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [23/Oct/2022:14:34:33 +0900] "GET /favicon.ico HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [23/Oct/2022:14:34:45 +0900] "GET /controller/WEB-INF/views/board/board_cont2.jsp HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [23/Oct/2022:14:35:05 +0900] "GET /controller/ HTTP/1.1" 200 186
+0:0:0:0:0:0:0:1 - - [23/Oct/2022:14:35:23 +0900] "GET /controller/replies HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [23/Oct/2022:14:35:28 +0900] "GET /replies HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [23/Oct/2022:14:35:33 +0900] "GET /replies/all HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [23/Oct/2022:14:35:43 +0900] "GET /replies/addreply HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [23/Oct/2022:14:35:53 +0900] "GET /controller/replies/addreply HTTP/1.1" 400 843

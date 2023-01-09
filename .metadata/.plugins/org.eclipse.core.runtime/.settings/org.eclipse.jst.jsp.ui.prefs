@@ -1,0 +1,7 @@
+SCRIPT_AREA_BORDER=\#bf5f3f | null | true | false | false | false
+commentText=\#3f5fbf | null | true | false | false | false
+eclipse.preferences.version=1
+newFileTemplateName=New JSP File (html 5)
+tagAttributeName=\#ff0000 | null | false | false | false | false
+tagAttributeValue=\#2a00ff | null | true | false | false | false
+tagName=\#0000ff | null | true | false | false | false

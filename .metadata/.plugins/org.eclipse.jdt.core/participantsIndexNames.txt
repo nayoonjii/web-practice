@@ -1,0 +1,23 @@
+INDEX VERSION 1.131
+C:\20220607\20220607Spring_work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\941350938.index
+\ex00\src\main\java
+C:\20220607\20220607Spring_work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2415907875.index
+\ex01\src\main\java
+C:\20220607Spring_work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3178133098.index
+\ex00\src\main\java
+C:\20220607\20220607Spring_work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3178133098.index
+\ex00\src\main\java
+C:\20220607\20220607Spring_work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3012140731.index
+\ex01\src\main\java
+C:\20220607\20220607Spring_work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1068761048.index
+\Project\src\main\java
+C:\20220607\20220607Spring_work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2641912149.index
+\ex00\src\main\java
+C:\20220607\20220607Spring_work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1094568293.index
+\Project\src\main\java
+C:\20220607\20220607Spring_work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2218824191.index
+\Project\src\main\java
+C:\20220607\20220607Spring_work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\328915297.index
+\Project\src\main\java
+C:\20220607\20220607Spring_work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1403975306.index
+\Project\src\main\java

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bbs" >
+  <!-- 자료실 저장 -->
+  <insert id="bbs_in" parameterType="bbs"> <!-- parameterType은 전달인자 자료형으로
+  												생략가능함 -->
+    insert into bbs (bbs_no,bbs_name,bbs_title,bbs_pwd,bbs_cont,bbs_file,
+    bbs_ref,bbs_step,bbs_level,bbs_date)values(bbs_no_seq.nextval,
+    #{bbs_name},#{bbs_title},#{bbs_pwd},#{bbs_cont},#{bbs_file},
+    bbs_no_seq.nextval,0,0,sysdate)
+    <!-- #{bbs_name}을 자바코드로 표현하면 bbs.getBbs_name();과 같은 기능을 한다. -->
+    <!-- 과제물 :upload폴더에 실제 변경된 이진파일이 업로드 되게하고, bbs테이블에 레코드를 저장되게 해보자 -->
+  </insert>
+  
+  <!-- 검색 전후 레코드 개수 -->
+  <select id="bbs_count" resultType="int"><!-- resultType 속성은 반환 자료형 -->
+    select count(bbs_no) from bbs
+    <where>
+      <if test="find_field==''"></if><!-- 검색전 -->
+      <if test="find_field=='bbs_title'"> <!-- 글제목 기준으로 검색할 때 -->
+        bbs_title like #{find_name}
+      </if>
+      <if test="find_field=='bbs_cont'"><!-- 글내용 기준으로 검색할때 -->
+       bbs_cont like #{find_name}
+      </if>
+    </where>
+  </select>
+  
+  <!-- 검색 전후 자료실 목록 -->
+  <select id="bbs_list" resultType="bbs">
+    select * from (select rowNum rNum,bbs_no,bbs_name,bbs_title,bbs_hit,bbs_ref,
+    bbs_step,bbs_level,bbs_date from 
+      (select * from bbs
+      <where>
+        <if test="find_field==''"></if>
+        <if test="find_field=='bbs_title'">
+          bbs_title like #{find_name}
+        </if>
+        <if test="find_field=='bbs_cont'">
+          bbs_cont like #{find_name} <!-- like는 ~와 비슷한 문자를 검색하는 검색연산자 -->
+        </if>
+      </where>
+        order by bbs_ref desc, bbs_level asc))
+        where rNum &gt;=#{startrow} and rNum &lt;=#{endrow}
+        <!-- #gt;= 은 >=의 뜻, &lt;= 은 <= 의 뜻 -->
+  </select>
+  
+  <!-- 조회수 증가 -->
+  <update id="bbs_hit" parameterType="int">
+    update bbs set bbs_hit=bbs_hit+1 where bbs_no=#{bbs_no}
+  </update>
+  
+  <!-- 내용보기 -->
+  <select id="bbs_cont" resultType="bbs">
+    select * from bbs where bbs_no=#{bbs_no}
+  </select>
+  
+  <!-- 답변 레벨 증가 -->
+  <update id="bbs_levelUp">
+   update bbs set bbs_level=bbs_level+1 where bbs_ref=#{bbs_ref}
+    and bbs_level>#{bbs_level}
+  </update>
+  
+  <!-- 답변 저장 -->
+  <insert id="reply_in" parameterType="com.naver.vo.BbsVO">
+    insert into bbs (bbs_no,bbs_name,bbs_title,bbs_pwd,bbs_cont,bbs_ref,bbs_step,
+    bbs_level,bbs_date) values(bbs_no_seq.nextval, #{bbs_name}, #{bbs_title},
+    #{bbs_pwd},#{bbs_cont},#{bbs_ref},#{bbs_step}+1, #{bbs_level}+1, sysdate)
+  </insert>
+  
+  <!-- 자료실 수정 -->
+  <insert id = "bbs_edit">
+    update bbs set bbs_name=#{bbs_name}, bbs_title=#{bbs_title}, bbs_cont=#{bbs_cont},
+    bbs_file=#{bbs_file} where bbs_no=#{bbs_no}
+  </insert>
+  
+  <!-- 자료실 삭제 -->
+  <insert id="bbs_del">
+    delete bbs where bbs_no=#{bbs_no}  <!-- from절은 생략가능함 -->
+  </insert>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

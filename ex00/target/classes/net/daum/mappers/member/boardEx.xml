@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Board">
+	
+	<select id="be_count" resultType="int">
+	  select count(*) from tbl_boardEx
+	</select>
+	
+	
+	<select id="be_list" resultType="board">
+	  select * from (select rowNum rNum,bno,title,writer,viewcnt,regdate from
+	  (select * from tbl_boardEx order by bno desc))
+	  where rNum &gt;= #{startrow} and rNum &lt;= #{endrow}
+	</select>
+
+</mapper>

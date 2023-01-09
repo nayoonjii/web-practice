@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+  <typeAliases>
+    <typeAlias type="net.daum.vo.BoardVO" alias="b"/>
+    <!-- BoardVO 빈클래스 객체별칭이 b를 할당. 이 b를 board.xml에서 참조한다. -->
+    <typeAlias type="net.daum.vo.BoardExVO" alias="board"/>
+    
+    <typeAlias type="net.daum.vo.ReplyVO" alias="r"/>
+    
+    <typeAlias type="net.daum.vo.MessageVO" alias="message"/> 
+    
+  </typeAliases>
+</configuration>
